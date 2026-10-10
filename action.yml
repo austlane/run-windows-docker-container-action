@@ -94,7 +94,7 @@ runs:
     - name: Run
       run: >-
         $runnerPathSource = Split-Path -Path "${env:RUNNER_TEMP}" -Parent;
-        $runnerPathTarget = $runnerPathSource.replace('D:', 'C:')
+        $runnerPathTarget = $runnerPathSource -replace '^[A-Za-z]:', 'C:'
 
         docker run
         ${{ steps.settings.outputs.default_environment_variables }}
